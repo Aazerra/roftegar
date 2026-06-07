@@ -132,7 +132,7 @@ jobs:
             /tmp/roftegar-venv/bin/python -m pip install --upgrade pip
             /tmp/roftegar-venv/bin/python -m pip install pyinstaller
 
-            VERSION=$(python -c "import tomllib,pathlib; print(tomllib.loads(pathlib.Path('pyproject.toml').read_text(encoding='utf-8'))['project']['version'])")
+            VERSION=$(python -c "import tomllib,pathlib; print(tomllib.loads(pathlib.Path(\"pyproject.toml\").read_text(encoding=\"utf-8\"))[\"project\"][\"version\"])")
 
             /tmp/roftegar-venv/bin/pyinstaller --clean --onefile --name roftegar roftegar/__main__.py
 

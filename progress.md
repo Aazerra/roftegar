@@ -1,5 +1,8 @@
 # Progress Report
 
+## 2026-06-07 12:28
+- Fixed Arch release version parsing command quoting in CI so `pyproject.toml` is read as a string literal inside the container Python invocation.
+
 ## 2026-06-07 12:26
 - Fixed Arch release workflow shell parsing by replacing nested heredoc version parsing with a one-line Python command inside the container script.
 
