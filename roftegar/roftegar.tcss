@@ -1,0 +1,69 @@
+/* ── Layout ─────────────────────────────────────────────────────────────── */
+
+Screen {
+    background: $surface;
+    layers: base overlay;
+}
+
+#main {
+    height: 1fr;
+}
+
+/* ── File Browser / DataTable ───────────────────────────────────────────── */
+
+FileBrowser {
+    height: 1fr;
+}
+
+FileBrowser DataTable {
+    height: 1fr;
+    background: $surface;
+}
+
+DataTable > .datatable--header {
+    background: $primary;
+    color: $text;
+    text-style: bold;
+}
+
+DataTable > .datatable--cursor {
+    background: $accent;
+    color: $text;
+}
+
+DataTable > .datatable--odd-row {
+    background: $surface-darken-1;
+}
+
+DataTable > .datatable--even-row {
+    background: $surface;
+}
+
+/* ── Confirm Modal ──────────────────────────────────────────────────────── */
+
+ConfirmModal {
+    align: center middle;
+}
+
+ConfirmModal > Grid {
+    grid-size: 2;
+    grid-gutter: 1 2;
+    grid-rows: auto auto;
+    padding: 1 2;
+    width: 52;
+    height: auto;
+    border: thick $error;
+    background: $surface;
+}
+
+ConfirmModal Label {
+    column-span: 2;
+    width: 1fr;
+    text-align: center;
+    padding: 1 0;
+    color: $text;
+}
+
+ConfirmModal Button {
+    width: 1fr;
+}
