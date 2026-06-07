@@ -2,9 +2,7 @@
 
 `roftegar` is a Python TUI for browsing directory sizes and monitoring basic system usage from the terminal. It is built with [Textual](https://textual.textualize.io/) and ships with a plugin-based startup menu.
 
-[![CI](https://github.com/Aazerra/roftegar/actions/workflows/ci.yml/badge.svg)](https://github.com/Aazerra/roftegar/actions/workflows/ci.yml)
-[![Build Releases](https://github.com/Aazerra/roftegar/actions/workflows/release.yml/badge.svg)](https://github.com/Aazerra/roftegar/actions/workflows/release.yml)
-[![License](https://img.shields.io/badge/license-Unspecified-lightgrey.svg)](LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 ## Features
 
@@ -13,7 +11,6 @@
 - Live system usage dashboard for CPU, memory, swap, and disk
 - Vim-style keybinds for fast keyboard navigation
 - Progress reporting while large directory trees are being scanned
-- GitHub Actions workflows for CI and release builds
 
 ## Built-in Plugins
 
@@ -83,26 +80,6 @@ pip install -e .
 python -m compileall roftegar
 ```
 
-## Release Builds
-
-GitHub Actions build downloadable artifacts for:
-
-- Debian / Linux
-- Arch Linux
-- Windows
-
-Release artifacts are attached to tagged releases in GitHub Actions.
-
-## Screenshots
-
-Short preview of the main flows:
-
-- Startup menu with plugin selection
-- Disk analyzer view with directory sizes and progress updates
-- System usage dashboard with live resource bars
-
-Add image files to the repository later if you want embedded screenshots in this section.
-
 ## Project Layout
 
 ```text
@@ -127,3 +104,4 @@ roftegar/
 - The app uses a plugin registry, so new features should generally be added as new plugins.
 - Large directory scans are handled in the background to keep the UI responsive.
 - See `progress.md` for the current project status and recent work.
+- The project is licensed under the MIT License. See `LICENSE` for the full text.
