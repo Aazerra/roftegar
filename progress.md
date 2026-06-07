@@ -1,5 +1,8 @@
 # Progress Report
 
+## 2026-06-07 12:23
+- Fixed Arch Linux release build in CI by installing `pyinstaller` via pip inside the Arch container instead of using pacman.
+
 ## 2026-06-07 12:19
 - Added Arch Linux release packaging in the tag-based release workflow and upload of `.pkg.tar.zst` artifacts to GitHub Releases.
 

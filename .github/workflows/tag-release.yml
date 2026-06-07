@@ -127,7 +127,9 @@ jobs:
           docker run --rm -v "$PWD:/work" -w /work archlinux:latest bash -lc '
             set -euo pipefail
 
-            pacman -Syu --noconfirm --needed base-devel python python-pip pyinstaller
+            pacman -Syu --noconfirm --needed base-devel python python-pip
+            python -m pip install --upgrade pip
+            python -m pip install pyinstaller
 
             VERSION=$(python - <<"PY"
             import tomllib
