@@ -1,5 +1,8 @@
 # Progress Report
 
+## 2026-06-07 12:26
+- Fixed Arch release workflow shell parsing by replacing nested heredoc version parsing with a one-line Python command inside the container script.
+
 ## 2026-06-07 12:25
 - Fixed Arch Linux release CI failure caused by an externally managed Python environment by creating a virtual environment before installing and running `pyinstaller`.
 
