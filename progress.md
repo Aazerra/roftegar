@@ -1,5 +1,8 @@
 # Progress Report
 
+## 2026-06-07 12:25
+- Fixed Arch Linux release CI failure caused by an externally managed Python environment by creating a virtual environment before installing and running `pyinstaller`.
+
 ## 2026-06-07 12:23
 - Fixed Arch Linux release build in CI by installing `pyinstaller` via pip inside the Arch container instead of using pacman.
 

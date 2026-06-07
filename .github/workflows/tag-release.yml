@@ -128,8 +128,9 @@ jobs:
             set -euo pipefail
 
             pacman -Syu --noconfirm --needed base-devel python python-pip
-            python -m pip install --upgrade pip
-            python -m pip install pyinstaller
+            python -m venv /tmp/roftegar-venv
+            /tmp/roftegar-venv/bin/python -m pip install --upgrade pip
+            /tmp/roftegar-venv/bin/python -m pip install pyinstaller
 
             VERSION=$(python - <<"PY"
             import tomllib
@@ -139,7 +140,7 @@ jobs:
             PY
             )
 
-            pyinstaller --clean --onefile --name roftegar roftegar/__main__.py
+            /tmp/roftegar-venv/bin/pyinstaller --clean --onefile --name roftegar roftegar/__main__.py
 
             mkdir -p packaging/arch
             cp dist/roftegar packaging/arch/roftegar.bin
