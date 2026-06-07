@@ -112,10 +112,75 @@ jobs:
           path: dist/*_windows_amd64.exe
           if-no-files-found: error
 
+  build-archlinux:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Build Arch Linux package in container
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          docker run --rm -v "$PWD:/work" -w /work archlinux:latest bash -lc '
+            set -euo pipefail
+
+            pacman -Syu --noconfirm --needed base-devel python python-pip pyinstaller
+
+            VERSION=$(python - <<"PY"
+            import tomllib
+            with open("pyproject.toml", "rb") as f:
+                data = tomllib.load(f)
+            print(data["project"]["version"])
+            PY
+            )
+
+            pyinstaller --clean --onefile --name roftegar roftegar/__main__.py
+
+            mkdir -p packaging/arch
+            cp dist/roftegar packaging/arch/roftegar.bin
+            cp README.md packaging/arch/README.md
+
+            cat > packaging/arch/PKGBUILD <<EOF
+            pkgname=roftegar-bin
+            pkgver=${VERSION}
+            pkgrel=1
+            pkgdesc="Terminal UI directory analyzer and system monitor"
+            arch=("x86_64")
+            url="https://github.com/${GITHUB_REPOSITORY}"
+            license=("MIT")
+            depends=("glibc")
+            source=("roftegar.bin" "README.md")
+            sha256sums=("SKIP" "SKIP")
+
+            package() {
+              install -Dm755 "${srcdir}/roftegar.bin" "${pkgdir}/usr/bin/roftegar"
+              install -Dm644 "${srcdir}/README.md" "${pkgdir}/usr/share/doc/roftegar/README.md"
+            }
+            EOF
+
+            useradd -m builder
+            chown -R builder:builder /work
+            su builder -c "cd /work/packaging/arch && makepkg --force --nodeps --clean"
+
+            mkdir -p /work/dist
+            cp /work/packaging/arch/*.pkg.tar.zst /work/dist/
+          '
+
+      - name: Upload Arch Linux artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: roftegar-archlinux
+          path: dist/*.pkg.tar.zst
+          if-no-files-found: error
+
   release:
     needs:
       - build-deb
       - build-windows-exe
+      - build-archlinux
     runs-on: ubuntu-latest
 
     steps:
@@ -131,3 +196,4 @@ jobs:
           files: |
             release-assets/roftegar-deb/*.deb
             release-assets/roftegar-windows-exe/*.exe
+            release-assets/roftegar-archlinux/*.pkg.tar.zst

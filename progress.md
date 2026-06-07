@@ -1,5 +1,8 @@
 # Progress Report
 
+## 2026-06-07 12:19
+- Added Arch Linux release packaging in the tag-based release workflow and upload of `.pkg.tar.zst` artifacts to GitHub Releases.
+
 ## 2026-06-07 12:02
 - Added a tag-triggered GitHub Actions release workflow that builds Linux `.deb` and Windows `.exe` artifacts and uploads them to GitHub Releases.
 
