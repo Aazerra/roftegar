@@ -1,5 +1,8 @@
 # Progress Report
 
+## 2026-06-07 12:30
+- Fixed Arch release CI by passing repository URL into the Docker container and using that value in `PKGBUILD` to avoid unbound `GITHUB_REPOSITORY` errors under `set -u`.
+
 ## 2026-06-07 12:28
 - Fixed Arch release version parsing command quoting in CI so `pyproject.toml` is read as a string literal inside the container Python invocation.
 
