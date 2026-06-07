@@ -11,3 +11,7 @@ dependencies = ["textual>=0.50.0", "psutil>=5.9.0"]
 
 [project.scripts]
 roftegar = "roftegar.__main__:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["roftegar"]
+force-include = { "roftegar/roftegar.tcss" = "roftegar/roftegar.tcss" }
