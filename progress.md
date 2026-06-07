@@ -1,5 +1,11 @@
 # Progress Report
 
+## 2026-06-07 12:02
+- Added a tag-triggered GitHub Actions release workflow that builds Linux `.deb` and Windows `.exe` artifacts and uploads them to GitHub Releases.
+
+## 2026-06-07 12:02
+- Added a GitHub Actions workflow to build and upload a Windows standalone executable (`.exe`) using PyInstaller.
+
 ## 2026-06-07 11:57
 - Added a GitHub Actions workflow to build and upload a Debian package artifact (`.deb`) on push, pull request, and manual runs.
 
